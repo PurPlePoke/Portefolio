@@ -1,16 +1,65 @@
-# React + Vite
+# Portfolio React/Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personnel (React 19 + Vite) avec pages projets détaillées, mode sombre, et données alimentées par Supabase (fallback local).
 
-Currently, two official plugins are available:
+## Démarrage rapide
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Configuration Supabase
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1) Crée un projet Supabase et copie **Project URL** et **anon public key**.
+2) Active RLS sur la table `projects` puis ajoute la policy de lecture :
 
-## Expanding the ESLint configuration
+```sql
+ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow public read access" ON projects FOR SELECT USING (true);
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3) Table recommandée `projects` :
+- id (int8, PK, auto)
+- title (text)
+- description (text)
+- details (text)
+- technologies (text[])
+- image (text)
+- github (text)
+- demo (text)
+- year (text)
+- created_at (timestamptz default now())
+
+4) Variables d’environnement (crée `.env` à partir de `.env.example`) :
+
+```env
+VITE_SUPABASE_URL=... 
+VITE_SUPABASE_ANON_KEY=...
+```
+
+Sans `.env`, le site utilise les données locales de secours.
+
+## Scripts
+- `npm run dev` : démarrage local
+- `npm run build` : build de production
+- `npm run preview` : prévisualisation du build
+- `npm run lint` : lint
+
+## Sécurité minimale
+- Ne commite jamais les clés (`.env` est ignoré par Git).
+- N’utilise que la clé **anon** côté front (pas de `service_role`).
+- RLS activé + policy de lecture seule sur `projects`; aucune écriture publique.
+- Formulaire contact : prévoir anti-spam (honeypot/CAPTCHA) côté backend si tu ajoutes un envoi d’email.
+
+## Fonctionnalités
+- Mode sombre/clair avec persistance locale.
+- Grille de projets cliquables vers `/projets/:id`.
+- Page détail projet avec fallback en local si Supabase indisponible.
+- Sections Hero, Compétences, Contact, Footer stylées et responsives.
+
+## Structure
+- `src/components` : Header, Hero, Projects, Skills, Contact, Footer
+- `src/pages/details_projet.jsx` : fiche projet
+- `src/data/projects.js` : données locales de secours
+- `src/supabaseClient.js` : client Supabase (utilise les variables d’environnement)
