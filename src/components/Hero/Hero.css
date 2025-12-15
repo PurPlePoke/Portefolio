@@ -1,0 +1,729 @@
+/* Background Animé */
+.hero {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    position: relative;
+    padding: 6rem 0 4rem;
+    box-sizing: border-box;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(32px);
+    animation: float-shape 8s ease-in-out infinite;
+}
+
+/* Forme 1 - En haut à droite */
+.bg-shape-1 {
+    top: 5rem;
+    right: 2.5rem;
+    width: 12rem;
+    height: 12rem;
+    background-color: rgba(77, 124, 15, 0.3);
+    animation-delay: 0s;
+}
+
+/* Forme 2 - En bas à gauche */
+.bg-shape-2 {
+    bottom: 5rem;
+    left: 2.5rem;
+    width: 16rem;
+    height: 16rem;
+    background-color: rgba(22, 101, 52, 0.3);
+    animation-delay: 4s;
+}
+
+/* Forme 3 - Bas centré */
+.bg-shape-3 {
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22rem;
+    height: 22rem;
+    background-color: rgba(34, 197, 94, 0.25);
+    animation-delay: 2s;
+}
+
+@keyframes float-shape {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(20px, -20px) scale(1.05);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+    75% {
+        transform: translate(20px, 20px) scale(1.02);
+    }
+}
+
+/* //////////////////////////// */
+.hero-container {
+    display: flex;
+    margin-top: 15rem;
+    margin-bottom: 13rem;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 3rem 0;
+    box-sizing: border-box;
+}
+
+.hero-left {
+    flex: 1.1;
+    min-width: 360px;
+    max-width: 640px;
+    padding-left: 2rem;
+
+}
+
+.hero-content {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero-role {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid green;
+    background-color: rgba(0, 128, 0, 0.1);
+    border-radius: 1.5rem;
+    padding: 0.4rem 1rem;
+    width: fit-content;
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.hero-name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 1rem 0;
+}
+
+.hero-formation {
+    font-size: 1.5rem;
+    color: green;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: green;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: darkgreen;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: black;
+    border: 2px solid lightgray;
+}
+
+.btn-secondary:hover {
+    background-color: lightgray;
+    border-color: darkgreen;
+    transform: translateY(-2px);
+}
+
+.hero-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+    border: 2px solid transparent;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.social-link svg {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.social-link:hover {
+    border-color: green;
+    background-color: green;
+    color: white;
+    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.1);
+    transform: rotate(15deg);
+}
+
+.hero-right {
+    flex: 0.95;
+    min-width: 340px;
+    max-width: 560px;
+    display: flex;
+    justify-content: center;
+}
+
+.cv-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* .cv-card:hover {
+    border-color: green;
+    box-shadow: 0 8px 30px rgba(0, 128, 0, 0.15);
+    transform: translateY(-5px);
+} */
+
+.cv-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cv-icon {
+    border: transparent;
+    border-radius: 10px;
+    padding: 0.825rem;
+    background-color: green;
+    font-size: 2.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.cv-header-text {
+    text-align: left;
+}
+
+.cv-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.cv-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.qr-code {
+    margin: 0 auto 1.5rem auto;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 2rem;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code img {
+    width: 180px;
+    height: 180px;
+    border-radius: 0.5rem;
+    object-fit: contain;
+}
+
+.qr-instruction {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.btn-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: black;
+    width: calc(100% - 2rem);
+    border: 2px solid lightgray;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    margin-top: 2rem;
+}
+
+.cv-icon-download {
+    border: transparent;
+    padding: 0.75rem;
+    background-color: white;
+    font-size: 1.5rem;
+    color: black;
+    flex-shrink: 0;
+}
+
+.btn-download .cv-icon-download {
+    padding: 0;
+    background: transparent;
+    font-size: 1.2rem;
+}
+
+.btn-download:hover {
+    border: 2px solid darkgreen;
+    background-color: rgba(95, 184, 0, 0.2);
+}
+
+.Scroll_down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0rem;
+    color: #666;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.Scroll_down p {
+    margin: 0.5rem 0;
+}
+
+.Scroll_down svg {
+    font-size: 2rem;
+}
+
+.Scroll_down {
+    user-select: none;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-container {
+        gap: 3rem;
+        padding: 1rem 2.5rem 0;
+    }
+
+    .hero-left {
+        min-width: 320px;
+        max-width: 600px;
+    }
+
+    .hero-right {
+        min-width: 320px;
+        max-width: 520px;
+    }
+
+    .hero-name {
+        font-size: 2.8rem;
+    }
+
+    .cv-card {
+        max-width: 460px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-container {
+        gap: 2.5rem;
+        padding: 1rem 2rem 0;
+    }
+
+    .hero-description {
+        font-size: 1.4rem;
+    }
+
+    .cv-card {
+        max-width: 460px;
+    }
+
+    .hero-left {
+        flex: 1;
+        min-width: 340px;
+    }
+
+    .hero-right {
+        flex: 0.9;
+        min-width: 340px;
+    }
+
+    .hero-name {
+        font-size: 2.6rem;
+    }
+
+    .qr-code img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-container {
+        gap: 2rem;
+        flex-direction: column;
+        padding: 2rem 1.5rem 0;
+    }
+
+    .hero-left {
+        min-width: auto;
+        max-width: 100%;
+        padding-left: 0;
+    }
+
+    .hero-right {
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero-name {
+        font-size: 2.4rem;
+    }
+
+    .hero-description {
+        font-size: 1.35rem;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 160px;
+    }
+
+    .cv-card {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .bg-shape {
+        opacity: 0.3;
+    }
+
+    .hero {
+        padding: 4rem 0 3rem;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3.5rem 0 2.5rem;
+        min-height: auto;
+    }
+
+    .hero-container {
+        gap: 2rem;
+        padding: 1.5rem 1rem 0;
+    }
+
+    .hero-name {
+        font-size: 2.2rem;
+    }
+
+    .hero-role {
+        font-size: 1.3rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .hero-formation {
+        font-size: 1.3rem;
+    }
+
+    .hero-description {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.65rem 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-secondary {
+        border-width: 1px;
+    }
+
+    .hero-socials {
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-link svg {
+        font-size: 1.8rem;
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .cv-card {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .cv-header {
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .cv-icon {
+        font-size: 2rem;
+        padding: 0.6rem;
+        width: auto;
+    }
+
+    .cv-title {
+        font-size: 1.3rem;
+    }
+
+    .cv-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .qr-code {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .qr-code img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .qr-instruction {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn-download {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+
+    .Scroll_down {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    .Scroll_down svg {
+        font-size: 1.8rem;
+    }
+
+    .bg-shape-1,
+    .bg-shape-2,
+    .bg-shape-3 {
+        opacity: 0.15;
+    }
+}
+
+@media (max-width: 540px) {
+    .hero {
+        padding: 3rem 0 2rem;
+    }
+
+    .hero-container {
+        gap: 1.5rem;
+        padding: 1rem 0.8rem 0;
+    }
+
+    .hero-left {
+        padding-left: 0;
+    }
+
+    .hero-name {
+        font-size: 1.9rem;
+        margin: 0.8rem 0;
+    }
+
+    .hero-role {
+        font-size: 1.15rem;
+        padding: 0.25rem 0.6rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .hero-formation {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-buttons {
+        gap: 0.6rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+
+    .hero-socials {
+        gap: 0.8rem;
+    }
+
+    .social-link {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-link svg {
+        font-size: 1.6rem;
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .cv-card {
+        padding: 1.2rem;
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .cv-header {
+        gap: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .cv-icon {
+        font-size: 1.8rem;
+        padding: 0.5rem;
+    }
+
+    .cv-title {
+        font-size: 1.1rem;
+    }
+
+    .cv-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .qr-code {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .qr-code img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .qr-instruction {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .btn-download {
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        margin-top: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .Scroll_down {
+        font-size: 1rem;
+        margin-top: 0.8rem;
+    }
+
+    .Scroll_down p {
+        margin: 0.3rem 0;
+    }
+
+    .Scroll_down svg {
+        font-size: 1.6rem;
+    }
+
+    .bg-shape {
+        display: none;
+    }
+}

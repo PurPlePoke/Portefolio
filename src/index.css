@@ -1,0 +1,223 @@
+:root {
+  --bg: #ffffff;
+  --text: #1f2933;
+  --muted: #4b5563;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --accent: #22c55e;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --footer-bg: #0f172a;
+  --footer-text: #e2e8f0;
+  --footer-border: #e5e7eb;
+}
+
+:root.dark {
+  --bg: #0b1220;
+  --text: #e2e8f0;
+  --muted: #cbd5e1;
+  --surface: #0f172a;
+  --surface-alt: #0b1324;
+  --card: #111827;
+  --border: #1f2937;
+  --accent: #22c55e;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --footer-bg: #0b1220;
+  --footer-text: #e2e8f0;
+  --footer-border: #1f2937;
+}
+
+html {
+  font-size: 62.5%; /* 10px/16px = 0.625 = 62.5% */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 96px 0 0 0;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Assurer que le Hero utilise full-height correctement */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Tablets - 768px et moins */
+@media (max-width: 1024px) {
+  html {
+    font-size: 60%; /* 9.6px/16px */
+  }
+
+  body {
+    padding-top: 90px;
+  }
+}
+
+/* Small tablets - 768px et moins */
+@media (max-width: 768px) {
+  html {
+    font-size: 58.5%; /* 9.36px/16px */
+  }
+
+  body {
+    padding-top: 84px;
+  }
+}
+
+/* Large mobile - 600px et moins */
+@media (max-width: 600px) {
+  html {
+    font-size: 56.25%; /* 9px/16px */
+  }
+
+  body {
+    padding-top: 78px;
+  }
+}
+
+/* Small mobile - 480px et moins */
+@media (max-width: 480px) {
+  html {
+    font-size: 54%; /* 8.64px/16px */
+  }
+
+  body {
+    padding-top: 72px;
+  }
+}
+
+/* Very small mobile - 360px et moins */
+@media (max-width: 360px) {
+  html {
+    font-size: 50%; /* 8px/16px */
+  }
+
+  body {
+    padding-top: 68px;
+  }
+}
+
+/* Light surfaces */
+.projects,
+.contact {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.skills {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Dark mode overrides */
+.dark body {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.dark .projects,
+.dark .contact {
+  background: #0b1324;
+  color: #e2e8f0;
+}
+
+.dark .skills {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.dark .section-title,
+.dark .contact__title,
+.dark .skill-card h3,
+.dark .contact__form-header h3 {
+  color: #e2e8f0;
+}
+
+.dark .section-desc,
+.dark .contact__description,
+.dark .hero-description,
+.dark .hero-formation,
+.dark .hero-role,
+.dark .projet-content p,
+.dark .projet-technologies li,
+.dark .qr-instruction,
+.dark .skill-item,
+.dark .projet-date,
+.dark .projet-description p {
+  color: #cbd5e1;
+}
+
+.dark .section-tag,
+.dark .contact__subtitle {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.dark .cv-card,
+.dark .projet-card,
+.dark .skill-card,
+.dark .contact__card,
+.dark .contact__right,
+.dark .projet-info,
+.dark .details-projet {
+  background: #111827;
+  color: #e2e8f0;
+  /* box-shadow: var(--shadow); */
+  border-color: #1f2937;
+  border-radius: 16px;
+}
+
+.dark .projet-tags span,
+.dark .skill-item,
+.dark .contact__card,
+.dark .contact__right,
+.dark .contact__form-group input,
+.dark .contact__form-group textarea {
+  background: #1f2937;
+  color: #e2e8f0;
+  border-color: #1f2937;
+}
+
+.dark .projet-content h3,
+.dark .hero-name,
+.dark .cv-title {
+  color: #e2e8f0;
+}
+
+.dark .nav a::after,
+.dark .btn-primary,
+.dark .btn-lien,
+.dark .btn-retour:hover {
+  background: #22c55e;
+}
+
+.dark .btn-secondary {
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .btn-secondary:hover {
+  background: #1f2937;
+  border-color: #22c55e;
+}
+
+.dark .btn-download,
+.dark .btn-retour {
+  border-color: #1f2937;
+  color: #e2e8f0;
+  background: #0f172a;
+}
+
+.dark .btn-download:hover,
+.dark .btn-retour:hover {
+  background: #111827;
+  border-color: #22c55e;
+}
