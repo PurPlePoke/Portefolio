@@ -32,8 +32,7 @@ const Projects = () => {
 
         fetchProjects();
     }, []);
-
-    // Extraire les technologies uniques au premier rendu
+    // Extraire les technologies uniques et filtrer au premier rendu
     useEffect(() => {
         const techs = new Set();
         projects.forEach((project) => {
@@ -41,7 +40,9 @@ const Projects = () => {
                 techs.add(tech);
             });
         });
-        setAvailableTechnologies(Array.from(techs).sort());
+        const sortedTechs = Array.from(techs).sort();
+        setAvailableTechnologies(sortedTechs);
+        setFilteredProjects(projects);
     }, [projects]);
 
     // Filtrer les projets quand le filtre change

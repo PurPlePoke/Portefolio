@@ -12,6 +12,73 @@ const DetailsProjet = () => {
     const [screenshots, setScreenshots] = useState([]);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+    const loadScreenshots = async (folder) => {
+        try {
+            // Créer une liste de screenshots basée sur les patterns connus
+            const screenshotsMap = {
+                'screen_ACF2L': [
+                    '/screen_ACF2L/Blanc/25_146_01.png',
+                    '/screen_ACF2L/Blanc/25_146_02.png',
+                    '/screen_ACF2L/Blanc/25_146_03.png',
+                    '/screen_ACF2L/Blanc/25_146_04.png',
+                    '/screen_ACF2L/Blanc/25_146_05.png',
+                    '/screen_ACF2L/Noir/25_02_06.png',
+                    '/screen_ACF2L/Noir/25_02_07.png',
+                    '/screen_ACF2L/Noir/25_02_08.png',
+                    '/screen_ACF2L/Noir/25_02_09.png',
+                    '/screen_ACF2L/Noir/25_02_10.png',
+                ],
+                'Screen_BioData': [
+                    '/Screen_BioData/25_148_01.png',
+                    '/Screen_BioData/25_148_02.png',
+                    '/Screen_BioData/25_148_03.png',
+                    '/Screen_BioData/25_148_04.png',
+                    '/Screen_BioData/25_148_05.png',
+                ],
+                'Screen_Etape_Projet': [
+                    '/Screen_FindGrade/25_150_e1.png',
+                    '/Screen_FindGrade/25_150_e2.png',
+                    '/Screen_FindGrade/25_150_e3.png',
+                ],
+                'Screen_FindGrade': [
+                    '/Screen_FindGrade/25_150_01.png',
+                    '/Screen_FindGrade/25_150_02.png',
+                    '/Screen_FindGrade/25_150_03.png',
+                    '/Screen_FindGrade/25_150_04.png',
+                    '/Screen_FindGrade/25_150_05.png',
+                    '/Screen_FindGrade/25_150_06.png',
+                    '/Screen_FindGrade/25_150_07.png',
+                ],
+                'Screen_NF': [
+                    '/Screen_NF/25_145_01.png',
+                    '/Screen_NF/25_145_02.png',
+                    '/Screen_NF/25_145_03.png',
+                    '/Screen_NF/25_145_04.png',
+                    '/Screen_NF/25_145_05.png',
+                    '/Screen_NF/25_145_06.png',
+                ],
+                'Screen_PRAMK': [
+                    '/Screen_PRAMK/25_147_01.png',
+                    '/Screen_PRAMK/25_147_02.png',
+                    '/Screen_PRAMK/25_147_03.png',
+                    '/Screen_PRAMK/25_147_04.png',
+                    '/Screen_PRAMK/Accueil.png',
+                ],
+                'Screen_WebDoc': [
+                    '/Screen_WebDoc/25_149_01.png',
+                    '/Screen_WebDoc/25_149_02.png',
+                    '/Screen_WebDoc/25_149_03.png',
+                    '/Screen_WebDoc/25_149_04.png',
+                    '/Screen_WebDoc/25_149_05.png',
+                ],
+            };
+            setScreenshots(screenshotsMap[folder] || []);
+            setCurrentImageIndex(0);
+        } catch (err) {
+            console.error('Erreur lors du chargement des screenshots:', err);
+        }
+    };
+
     useEffect(() => {
         const load = async () => {
             if (!supabase) return; // fallback to local data if no env
@@ -33,73 +100,6 @@ const DetailsProjet = () => {
             loadScreenshots(project.screenshotFolder);
         }
     }, [id, project?.screenshotFolder]);
-
-    const loadScreenshots = async (folder) => {
-        try {
-            // Créer une liste de screenshots basée sur les patterns connus
-            const screenshotsMap = {
-                'screen_ACF2L': [
-                    '/Portefolio/screen_ACF2L/Blanc/25_146_01.png',
-                    '/Portefolio/screen_ACF2L/Blanc/25_146_02.png',
-                    '/Portefolio/screen_ACF2L/Blanc/25_146_03.png',
-                    '/Portefolio/screen_ACF2L/Blanc/25_146_04.png',
-                    '/Portefolio/screen_ACF2L/Blanc/25_146_05.png',
-                    '/Portefolio/screen_ACF2L/Noir/25_02_06.png',
-                    '/Portefolio/screen_ACF2L/Noir/25_02_07.png',
-                    '/Portefolio/screen_ACF2L/Noir/25_02_08.png',
-                    '/Portefolio/screen_ACF2L/Noir/25_02_09.png',
-                    '/Portefolio/screen_ACF2L/Noir/25_02_10.png',
-                ],
-                'Screen_BioData': [
-                    '/Portefolio/Screen_BioData/25_148_01.png',
-                    '/Portefolio/Screen_BioData/25_148_02.png',
-                    '/Portefolio/Screen_BioData/25_148_03.png',
-                    '/Portefolio/Screen_BioData/25_148_04.png',
-                    '/Portefolio/Screen_BioData/25_148_05.png',
-                ],
-                'Screen_Etape_Projet': [
-                    '/Portefolio/Screen_FindGrade/25_150_e1.png',
-                    '/Portefolio/Screen_FindGrade/25_150_e2.png',
-                    '/Portefolio/Screen_FindGrade/25_150_e3.png',
-                ],
-                'Screen_FindGrade': [
-                    '/Portefolio/Screen_FindGrade/25_150_01.png',
-                    '/Portefolio/Screen_FindGrade/25_150_02.png',
-                    '/Portefolio/Screen_FindGrade/25_150_03.png',
-                    '/Portefolio/Screen_FindGrade/25_150_04.png',
-                    '/Portefolio/Screen_FindGrade/25_150_05.png',
-                    '/Portefolio/Screen_FindGrade/25_150_06.png',
-                    '/Portefolio/Screen_FindGrade/25_150_07.png',
-                ],
-                'Screen_NF': [
-                    '/Portefolio/Screen_NF/25_145_01.png',
-                    '/Portefolio/Screen_NF/25_145_02.png',
-                    '/Portefolio/Screen_NF/25_145_03.png',
-                    '/Portefolio/Screen_NF/25_145_04.png',
-                    '/Portefolio/Screen_NF/25_145_05.png',
-                    '/Portefolio/Screen_NF/25_145_06.png',
-                ],
-                'Screen_PRAMK': [
-                    '/Portefolio/Screen_PRAMK/25_147_01.png',
-                    '/Portefolio/Screen_PRAMK/25_147_02.png',
-                    '/Portefolio/Screen_PRAMK/25_147_03.png',
-                    '/Portefolio/Screen_PRAMK/25_147_04.png',
-                    '/Portefolio/Screen_PRAMK/Accueil.png',
-                ],
-                'Screen_WebDoc': [
-                    '/Portefolio/Screen_WebDoc/25_149_01.png',
-                    '/Portefolio/Screen_WebDoc/25_149_02.png',
-                    '/Portefolio/Screen_WebDoc/25_149_03.png',
-                    '/Portefolio/Screen_WebDoc/25_149_04.png',
-                    '/Portefolio/Screen_WebDoc/25_149_05.png',
-                ],
-            };
-            setScreenshots(screenshotsMap[folder] || []);
-            setCurrentImageIndex(0);
-        } catch (err) {
-            console.error('Erreur lors du chargement des screenshots:', err);
-        }
-    };
 
     const nextImage = () => {
         if (screenshots.length > 0) {
