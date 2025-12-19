@@ -62,7 +62,7 @@ const Hero = () => {
                         </div>
                         
                         <div className="qr-code">
-                            <img src="/qr-cv.svg" alt="QR Code - CV" />
+                            <img src="/Portefolio/qr-cv.svg" alt="QR Code - CV" />
                         </div>
 
                         
