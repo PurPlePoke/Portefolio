@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { FiX, FiMenu } from 'react-icons/fi';
 import './Header.css';
@@ -41,10 +41,10 @@ const Header = () => {
                 </div>
                 <nav className="nav">
                     <ul className="nav-list">
-                        <li><a href="#hero">Accueil</a></li>
-                        <li><a href="#projects">Projets</a></li>
-                        <li><a href="#competences">Compétences</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/#hero">Accueil</a></li>
+                        <li><a href="/#projects">Projets</a></li>
+                        <li><a href="/#competences">Compétences</a></li>
+                        <li><a href="/#contact">Contact</a></li>
                     </ul>
                 </nav>
 
@@ -70,10 +70,10 @@ const Header = () => {
             {/* Mobile menu overlay */}
             <div id="mobile-menu" className={`mobile-menu ${menuOpen ? 'show' : ''}`} role="dialog" aria-modal="true">
                 <ul className="mobile-menu__list" onClick={closeMenu}>
-                    <li><a href="#hero">Accueil</a></li>
-                    <li><a href="#projects">Projets</a></li>
-                    <li><a href="#competences">Compétences</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/#hero">Accueil</a></li>
+                    <li><a href="/#projects">Projets</a></li>
+                    <li><a href="/#competences">Compétences</a></li>
+                    <li><a href="/#contact">Contact</a></li>
                 </ul>
             </div>
         </header>

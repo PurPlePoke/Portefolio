@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import './Hero.css';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { FaRegFileLines } from 'react-icons/fa6';
@@ -7,6 +7,8 @@ import { GoArrowDown } from "react-icons/go";
 
 
 const Hero = () => {
+    const [qrZoomed, setQrZoomed] = useState(false);
+
     return (
         <section className="hero" id="hero">
             {/* Background animé */}
@@ -26,7 +28,7 @@ const Hero = () => {
                         <p className="hero-description">
                             Je crée des expériences web immersives et innovantes. Spécialisé en développement frontend avec une passion pour le design interactif.
                         </p>
-                        
+
                         <div className="hero-buttons">
                             <a href="#projects" className="btn btn-primary">
                                 Découvrir mes projets
@@ -60,16 +62,17 @@ const Hero = () => {
                                 <p className="cv-subtitle">Scannez pour télécharger</p>
                             </div>
                         </div>
-                        
-                        <div className="qr-code">
-                            <img src="/qr-cv.svg" alt="QR Code - CV" />
+
+                        <div className="qr-code" onClick={() => setQrZoomed(true)} title="Cliquez pour agrandir">
+                            <img src="/QR_Code.png" alt="QR Code - CV" />
+                            <span className="qr-zoom-hint">🔍</span>
                         </div>
 
-                        
-                        <a href="https://drive.google.com/uc?export=download&id=1_OzkzzTxcbH5SgrVr5yZ2Ij59dfF4bpr" download className="btn btn-download">
+
+                        <a href="https://drive.google.com/file/d/1xWJRqjYOmWy7xp_5Dv30R_spHF2oxybp/view?usp=sharing" download className="btn btn-download">
                             <FaRegFileLines className="cv-icon-download" />
                             <span>Télécharger le CV</span>
-                        </a> 
+                        </a>
 
                         <p className="qr-instruction">
                             Scannez le QR code avec votre téléphone pour accéder à mon CV complet
@@ -82,6 +85,16 @@ const Hero = () => {
                 <p>Défilez vers le bas</p>
                 <p><GoArrowDown /></p>
             </div>
+
+            {/* Modal QR zoomé */}
+            {qrZoomed && (
+                <div className="qr-modal" onClick={() => setQrZoomed(false)}>
+                    <div className="qr-modal__content">
+                        <img src="/QR_Code.png" alt="QR Code - CV" />
+                        <p>Scannez pour accéder à mon CV</p>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
