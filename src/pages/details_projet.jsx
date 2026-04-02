@@ -171,7 +171,7 @@ const DetailsProjet = () => {
                         )}
                     </div>
                 ) : (
-                    <img src={project.image} alt={project.title} className="projet-image" />
+                    <img src={project.image} alt={project.title} className="projet-image-fallback" />
                 )}
 
                 <div className="projet-info">
