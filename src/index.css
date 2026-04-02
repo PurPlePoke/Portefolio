@@ -183,7 +183,11 @@ body {
 .dark .contact__form-group textarea {
   background: #1f2937;
   color: #e2e8f0;
-  border-color: #1f2937;
+}
+
+.dark .contact__form-group input,
+.dark .contact__form-group textarea {
+  border-color: #374151;
 }
 
 .dark .projet-content h3,

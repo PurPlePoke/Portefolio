@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import { MdEmail, MdPhone, MdLocationOn, MdMessage } from "react-icons/md";
 
@@ -6,8 +7,10 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     nom: "",
     prenom: "",
+    email: "",
     message: ""
   });
+  const [status, setStatus] = useState(null); // null | "loading" | "success" | "error"
 
   const contactInfo = [
     {
@@ -35,10 +38,28 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Formulaire envoyé:", formData);
-    setFormData({ nom: "", prenom: "", message: "" });
+    setStatus("loading");
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          nom: formData.nom,
+          prenom: formData.prenom,
+          email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus("success");
+      setFormData({ nom: "", prenom: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -54,7 +75,6 @@ export default function Contact() {
           N'hésitez pas à me contacter pour discuter de vos projets ou pour toute collaboration.
           Je suis toujours ouvert aux nouvelles opportunités et aux échanges constructifs.
         </p>
-        
 
         <div className="contact__content">
           {/* Côté gauche - Cartes de contact */}
@@ -114,6 +134,19 @@ export default function Contact() {
               </div>
 
               <div className="contact__form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="votre@email.com"
+                  required
+                />
+              </div>
+
+              <div className="contact__form-group">
                 <label htmlFor="message">Message</label>
                 <textarea
                   id="message"
@@ -126,8 +159,19 @@ export default function Contact() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="contact__button">
-                Envoyer
+              {status === "success" && (
+                <p className="contact__feedback contact__feedback--success">
+                  Message envoyé avec succès !
+                </p>
+              )}
+              {status === "error" && (
+                <p className="contact__feedback contact__feedback--error">
+                  Une erreur est survenue. Veuillez réessayer.
+                </p>
+              )}
+
+              <button type="submit" className="contact__button" disabled={status === "loading"}>
+                {status === "loading" ? "Envoi en cours..." : "Envoyer"}
               </button>
             </form>
           </div>

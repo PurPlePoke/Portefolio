@@ -71,4 +71,16 @@ export const projects = [
     demo: '',
     year: '2024',
   },
+  {
+    id: 7,
+    title: 'Mon Espace Formation',
+    description: 'Créer une plateforme mettant en avant des formations en présentiel et permettant de s\'inscrire en ligne.',
+    details: "L’objectif du projet était de concevoir et réaliser une application web permettant à TXLFORMA de :\n - centraliser et administrer les informations relatives à ses formations,\n - faciliter la communication auprès de ses clients,\n - poser les bases d’un futur déploiement sur infrastructure mobile.\n\nCe projet visait à répondre à de vrais besoins organisationnels et communicationnels, en intégrant des considérations de développement web dynamique, d’architecture logicielle, et d’ergonomie utilisateur.",
+    technologies: ['HTML','CSS','Figma', 'JavaScript'],
+    image: '/Screen_WebDoc/25_149_01.png',
+    screenshotFolder: 'Screen_WebDoc',
+    github: '',
+    demo: '',
+    year: '2024',
+  },
 ];
