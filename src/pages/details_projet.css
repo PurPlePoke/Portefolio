@@ -1,7 +1,7 @@
 .details-projet {
   max-width: 1100px;
   margin: 120px auto 0;
-  padding: 40px 24px 40px;
+  padding: 40px 24px 60px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -14,9 +14,9 @@
 }
 
 .btn-retour {
-  border: 1px solid #d1d5db;
-  background: white;
-  color: #111827;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
   padding: 10px 16px;
   border-radius: 10px;
   cursor: pointer;
@@ -26,8 +26,8 @@
 }
 
 .btn-retour:hover {
-  background: #f3f4f6;
-  border-color: #111827;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .projet-container {
@@ -44,7 +44,7 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* Gallery Styles */
+/* Gallery */
 .projet-gallery {
   display: flex;
   flex-direction: column;
@@ -56,12 +56,13 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  max-height: 480px;
+  max-height: 400px;
+  background: var(--surface-alt);
 }
 
 .gallery-main img {
   width: 100%;
-  height: 480px;
+  height: 400px;
   border-radius: 16px;
   object-fit: cover;
 }
@@ -82,16 +83,11 @@
 }
 
 .gallery-nav:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.75);
 }
 
-.gallery-nav--prev {
-  left: 16px;
-}
-
-.gallery-nav--next {
-  right: 16px;
-}
+.gallery-nav--prev { left: 16px; }
+.gallery-nav--next { right: 16px; }
 
 .gallery-counter {
   position: absolute;
@@ -109,13 +105,13 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding: 8px 0;
+  padding: 4px 0;
 }
 
 .thumbnail {
-  flex: 0 0 80px;
-  height: 80px;
-  border: 2px solid #e5e7eb;
+  flex: 0 0 72px;
+  height: 72px;
+  border: 2px solid var(--border);
   border-radius: 8px;
   padding: 0;
   cursor: pointer;
@@ -131,51 +127,70 @@
 }
 
 .thumbnail:hover {
-  border-color: #16a34a;
+  border-color: var(--accent);
   transform: scale(1.05);
 }
 
 .thumbnail.active {
-  border-color: #16a34a;
-  box-shadow: 0 0 0 2px white, 0 0 8px rgba(22, 163, 74, 0.3);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
+/* Info panel */
 .projet-info {
-  background: white;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 20px 24px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
+}
+
+.projet-info h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
 }
 
 .projet-date {
-  color: #16a34a;
+  color: var(--accent);
   font-weight: 700;
   margin: 0;
 }
 
+.projet-description h2,
+.projet-technologies h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
 .projet-description p {
-  line-height: 1.6;
-  color: #4b5563;
-  margin: 8px 0 0;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
 }
 
 .projet-technologies ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   padding: 0;
-  margin: 8px 0 0;
+  margin: 0;
   list-style: none;
 }
 
 .projet-technologies li {
-  background: #f3f4f6;
-  border-radius: 10px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 6px 12px;
   font-weight: 600;
-  color: #374151;
+  font-size: 13px;
+  color: var(--text);
 }
 
 .projet-links {
@@ -185,9 +200,9 @@
 }
 
 .btn-lien {
-  background: #16a34a;
+  background: var(--accent);
   color: white;
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
@@ -196,23 +211,29 @@
 
 .btn-lien:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
 }
 
 @media (max-width: 900px) {
-  .projet-container {
-    grid-template-columns: 1fr;
+  .details-projet {
+    margin-top: 100px;
   }
 
-  .details-projet {
-    margin-top: 110px;
+  .projet-container {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 600px) {
   .details-projet {
-    margin: 100px auto 60px;
+    margin: 90px auto 40px;
     padding: 0 16px 32px;
+  }
+
+  .gallery-main,
+  .gallery-main img {
+    height: 280px;
+    max-height: 280px;
   }
 
   .projet-info {
