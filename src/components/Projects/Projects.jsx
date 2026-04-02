@@ -2,36 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Projects.css';
 import { projects as localProjects } from '../../data/projects';
-import { supabase } from '../../supabaseClient';
+// import { supabase } from '../../supabaseClient';
 
 const Projects = () => {
     const [projects, setProjects] = useState(localProjects);
     const [filteredProjects, setFilteredProjects] = useState(localProjects);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    // const [loading, setLoading] = useState(false);
+    // const [error, setError] = useState(null);
     const [selectedFilter, setSelectedFilter] = useState('Tous');
     const [availableTechnologies, setAvailableTechnologies] = useState([]);
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            if (!supabase) return; // fallback to local data if no env
-            setLoading(true);
-            setError(null);
-            const { data, error } = await supabase
-                .from('projects')
-                .select('*')
-                .order('year', { ascending: false });
-            if (error) {
-                setError('Impossible de charger les projets distants. Affichage des données locales.');
-                setProjects(localProjects);
-            } else if (data) {
-                setProjects(data);
-            }
-            setLoading(false);
-        };
-
-        fetchProjects();
-    }, []);
+    // useEffect(() => {
+    //     const fetchProjects = async () => {
+    //         if (!supabase) return;
+    //         setLoading(true);
+    //         setError(null);
+    //         const { data, error } = await supabase
+    //             .from('projects')
+    //             .select('*')
+    //             .order('year', { ascending: false });
+    //         if (error) {
+    //             setError('Impossible de charger les projets distants. Affichage des données locales.');
+    //             setProjects(localProjects);
+    //         } else if (data) {
+    //             setProjects(data);
+    //         }
+    //         setLoading(false);
+    //     };
+    //     fetchProjects();
+    // }, []);
     // Extraire les technologies uniques et filtrer au premier rendu
     useEffect(() => {
         const techs = new Set();
@@ -69,8 +68,8 @@ const Projects = () => {
                     <h2 className="section-title">Projets Web Interactifs</h2>
                     <p className="section-desc">Découvrez mes créations, de la conception à la réalisation. Chaque projet est une opportunité d'innover.</p>
                 </div>
-                {loading && <p className="section-desc">Chargement des projets...</p>}
-                {error && <p className="section-desc" style={{ color: 'var(--accent)' }}>{error}</p>}
+                {/* {loading && <p className="section-desc">Chargement des projets...</p>} */}
+                {/* {error && <p className="section-desc" style={{ color: 'var(--accent)' }}>{error}</p>} */}
                 <div className="projects__filters">
                     <button
                         className={selectedFilter === 'Tous' ? 'active' : ''}

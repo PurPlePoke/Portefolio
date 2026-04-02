@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import './details_projet.css';
 import { projects as localProjects } from '../data/projects';
-import { supabase } from '../supabaseClient';
+// import { supabase } from '../supabaseClient';
 
 const DetailsProjet = () => {
     const { id } = useParams();
@@ -80,22 +80,21 @@ const DetailsProjet = () => {
     };
 
     useEffect(() => {
-        const load = async () => {
-            if (!supabase) return; // fallback to local data if no env
-            const { data, error } = await supabase
-                .from('projects')
-                .select('*')
-                .eq('id', Number(id))
-                .single();
-            if (error) {
-                setError('Impossible de charger ce projet depuis la base. Données locales affichées.');
-                return;
-            }
-            setProject(data);
-        };
-        load();
+        // const load = async () => {
+        //     if (!supabase) return;
+        //     const { data, error } = await supabase
+        //         .from('projects')
+        //         .select('*')
+        //         .eq('id', Number(id))
+        //         .single();
+        //     if (error) {
+        //         setError('Impossible de charger ce projet depuis la base. Données locales affichées.');
+        //         return;
+        //     }
+        //     setProject(data);
+        // };
+        // load();
 
-        // Charger les screenshots depuis le dossier public
         if (project && project.screenshotFolder) {
             loadScreenshots(project.screenshotFolder);
         }
