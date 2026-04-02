@@ -33,12 +33,9 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header-container">
-                <div className="logo" aria-label="Logo KL">
-                    <h1 className="logo-text">
-                        <span className="logo-k" aria-hidden="true">K</span>
-                        <span className="logo-l" aria-hidden="true">L</span>
-                    </h1>
-                </div>
+                <a href="/#hero" className="logo" aria-label="Accueil">
+                    <img src={theme === 'dark' ? '/Logo_2.svg' : '/Logo.svg'} alt="Logo KL" className="logo-img" />
+                </a>
                 <nav className="nav">
                     <ul className="nav-list">
                         <li><a href="/#hero">Accueil</a></li>
