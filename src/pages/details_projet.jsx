@@ -137,10 +137,10 @@ const DetailsProjet = () => {
                 {screenshots.length > 0 ? (
                     <div className="projet-gallery">
                         <div className="gallery-main">
-                            <img 
-                                src={screenshots[currentImageIndex]} 
-                                alt={`${project.title} - Screenshot ${currentImageIndex + 1}`} 
-                                className="projet-image" 
+                            <img
+                                src={screenshots[currentImageIndex]}
+                                alt={`${project.title} - Screenshot ${currentImageIndex + 1}`}
+                                className="gallery-img"
                             />
                             {screenshots.length > 1 && (
                                 <>
